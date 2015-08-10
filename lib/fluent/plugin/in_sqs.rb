@@ -56,7 +56,7 @@ module Fluent
             record['url'] = message.queue.url.to_s
             record['sender_id'] = message.sender_id.to_s
 
-            Engine.emit(@tag, Time.now.to_i, record)
+            Engine.emit(@tag, Engine.now, record)
           end
         rescue
           $log.error "failed to emit or receive", :error => $!.to_s, :error_class => $!.class.to_s
